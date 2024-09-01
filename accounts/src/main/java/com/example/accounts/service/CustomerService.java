@@ -9,21 +9,33 @@ import com.example.accounts.mapper.CustomerMapper;
 import com.example.accounts.repo.AccountsRepo;
 import com.example.accounts.repo.CustomerRepo;
 import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validator;
+import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
+@Setter
 @FieldDefaults(makeFinal = true,level = AccessLevel.PRIVATE)
 public class CustomerService {
     CustomerRepo repo;
     CustomerMapper mapper;
     AccountsRepo accountsRepo;
+    @NonFinal
+    Validator validator;
 
     @Transactional
     public CustomerResponse create(CustomerRequest x) {
+        var violations = validator.validate(x);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
         if(repo.existsByNameOrEmailOrPhone(x.name(),x.email(),x.phone())){
             throw new EntityAlreadyExistsException("Customer already exists");
         }
@@ -40,6 +52,10 @@ public class CustomerService {
 
     @Transactional
     public CustomerResponse update(Integer id, CustomerRequest x) {
+        var violations = validator.validate(x);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
         if(id==null || id<1){
             throw new IllegalArgumentException("id should be positive");
         }
@@ -58,15 +74,21 @@ public class CustomerService {
 
     }
 
-    public CustomerResponse findByPhone(String phone) {
+    public CustomerResponse findByPhone(@Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits") String phone) {
+        var violations = validator.validate(phone);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
         var account = accountsRepo.findByCustomerPhone(phone)
                 .orElseThrow(() -> new EntityNotFoundException("Account not found"));
         return mapper.toDto(account.getCustomer());
     }
 
-    public void deleteByPhone(String phone) {
-        if(phone.isBlank()){
-            throw new IllegalArgumentException("phone should not be blank");
+    @Transactional
+    public void deleteByPhone(@Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits") String phone) {
+        var violations = validator.validate(phone);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
         }
         accountsRepo.deleteByCustomerPhone(phone);
     }
