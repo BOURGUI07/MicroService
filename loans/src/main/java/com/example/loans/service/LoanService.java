@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,6 @@ import java.util.List;
 public class LoanService {
     LoanMapper mapper;
     LoansRepo repo;
-    @NonFinal
     Validator validator;
 
     public List<LoanResponse> findByPhone(

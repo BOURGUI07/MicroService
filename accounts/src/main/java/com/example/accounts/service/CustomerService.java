@@ -9,7 +9,9 @@ import com.example.accounts.mapper.CustomerMapper;
 import com.example.accounts.repo.AccountsRepo;
 import com.example.accounts.repo.CustomerRepo;
 import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
@@ -17,18 +19,19 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
-@Setter
 @FieldDefaults(makeFinal = true,level = AccessLevel.PRIVATE)
 public class CustomerService {
     CustomerRepo repo;
     CustomerMapper mapper;
     AccountsRepo accountsRepo;
-    @NonFinal
-    Validator validator;
+    Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     @Transactional
     public CustomerResponse create(CustomerRequest x) {
@@ -38,9 +41,6 @@ public class CustomerService {
         }
         if(repo.existsByNameOrEmailOrPhone(x.name(),x.email(),x.phone())){
             throw new EntityAlreadyExistsException("Customer already exists");
-        }
-        if(accountsRepo.existsByAccountTypeOrBranchAddress(x.accountType(),x.branchAddress())){
-            throw new EntityAlreadyExistsException("Account already exists");
         }
         var customer = mapper.toCustomerEntity(x);
         var savedCustomer = repo.save(customer);

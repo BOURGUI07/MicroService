@@ -3,9 +3,6 @@ package com.example.cards.mapper;
 import com.example.cards.dto.CardRequest;
 import com.example.cards.dto.CardResponse;
 import com.example.cards.entity.Cards;
-import com.example.loans.dto.LoanRequest;
-import com.example.loans.dto.LoanResponse;
-import com.example.loans.entity.Loans;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -18,6 +18,4 @@ public interface AccountsRepo extends JpaRepository<Accounts, Integer> {
     @Transactional
     @Modifying
     void deleteByCustomerPhone(String phone);
-    boolean existsByAccountTypeOrBranchAddress(String accountType, String branchAddress);
-
 }

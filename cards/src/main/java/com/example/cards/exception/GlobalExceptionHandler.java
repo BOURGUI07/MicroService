@@ -1,6 +1,6 @@
 package com.example.cards.exception;
 
-import com.example.loans.dto.ErrorResponseDTO;
+import com.example.cards.dto.ErrorResponseDTO;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -64,7 +64,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(OptimisticLockException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<ErrorResponseDTO> handleOptimisticLockException(OptimisticLockException ex, WebRequest request) {
-        log.error("AlreadyExistsException Occured: {}",ex.getMessage());
+        log.error("Optimistic Lock Exception Occured: {}",ex.getMessage());
         var errorResponse = new ErrorResponseDTO(request.getDescription(false),HttpStatus.CONFLICT,HttpStatus.CONFLICT.value(), ex.getMessage(), System.currentTimeMillis());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }

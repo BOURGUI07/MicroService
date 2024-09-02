@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<ErrorResponseDTO> handleAlreadyExistsException(EntityAlreadyExistsException ex, WebRequest request) {
         log.error("AlreadyExistsException Occured: {}",ex.getMessage());
-        var errorResponse = new ErrorResponseDTO(request.getDescription(false),HttpStatus.NOT_FOUND, ex.getMessage(), System.currentTimeMillis());
+        var errorResponse = new ErrorResponseDTO(request.getDescription(false),HttpStatus.CONFLICT, ex.getMessage(), System.currentTimeMillis());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 
