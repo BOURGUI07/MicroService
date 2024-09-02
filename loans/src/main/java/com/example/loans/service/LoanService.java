@@ -2,6 +2,7 @@ package com.example.loans.service;
 
 import com.example.loans.dto.LoanRequest;
 import com.example.loans.dto.LoanResponse;
+import com.example.loans.exception.EntityAlreadyExistsException;
 import com.example.loans.exception.EntityNotFoundException;
 import com.example.loans.exception.OptimisticLockException;
 import com.example.loans.mapper.LoanMapper;
@@ -9,6 +10,7 @@ import com.example.loans.repo.LoansRepo;
 import jakarta.persistence.EntityExistsException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -30,7 +32,7 @@ import java.util.List;
 public class LoanService {
     LoanMapper mapper;
     LoansRepo repo;
-    Validator validator;
+    Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     public List<LoanResponse> findByPhone(
             @Pattern(regexp = "(^$|[0-9]{10})",message = "Mobile Number must be 10 digits")
@@ -49,7 +51,7 @@ public class LoanService {
             throw new ConstraintViolationException(violations);
         }
         if(repo.existsByLoanNumber(request.loanNumber())){
-            throw new EntityExistsException("loan with loanNumber:  " + request.loanNumber() + "already exists");
+            throw new EntityAlreadyExistsException("loan with loanNumber:  " + request.loanNumber() + " already exists");
         }
         var loan = mapper.toEntity(request);
         var savedLoan = repo.save(loan);
