@@ -1,0 +1,38 @@
+services:
+  accounts:
+    image: "youness544/accounts"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - youness
+  loans:
+    image: "youness544/loans"
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - youness
+  cards:
+    image: "youness544/cards"
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - youness
+
+networks:
+  youness:
+    driver: "bridge"
