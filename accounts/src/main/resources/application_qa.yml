@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "2.0"
+
+
+accounts:
+  message: "Welcome to Sara accounts related QA APIs "
+  contactDetails:
+    name: "Sara Bourgui - QA Lead"
+    email: "sarabourgui@gmail.com"
+  onCallSupport:
+    - (212) 678213183

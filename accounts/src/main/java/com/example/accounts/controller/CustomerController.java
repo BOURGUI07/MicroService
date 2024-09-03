@@ -1,5 +1,6 @@
 package com.example.accounts.controller;
 
+import com.example.accounts.dto.AccountsContactInfo;
 import com.example.accounts.dto.CustomerRequest;
 import com.example.accounts.dto.CustomerResponse;
 import com.example.accounts.dto.ErrorResponseDTO;
@@ -14,6 +15,9 @@ import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +31,11 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @Tag(name="Customer", description=" Customer Controller")
 public class CustomerController {
+    @Value("${build.version}")
+    @NonFinal String buildVersion;
     CustomerService customerService;
+    Environment environment;
+    AccountsContactInfo accountsContactInfo;
 
     @Operation(summary="Create a new  Customer")
     @ApiResponses(value={
@@ -101,4 +109,52 @@ public class CustomerController {
     public ResponseEntity<CustomerResponse> findByPhone(@RequestParam @Valid String phone){
         return ResponseEntity.ok(customerService.findByPhone(phone));
     }
+
+
+
+    @Operation(summary = "Get Build Information")
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200",description = "Build Information Successfully Retrieved"),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/build-info")
+    public ResponseEntity<String> buildInfo(){
+        return ResponseEntity.ok(buildVersion);
+    }
+
+    @Operation(summary = "Get Java Version")
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200",description = "Java Version Successfully Retrieved"),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/java-version")
+    public ResponseEntity<String> javaVersion(){
+        return ResponseEntity.ok(environment.getProperty("JAVA_HOME"));
+    }
+
+    @Operation(summary = "Get Maven Version")
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200",description = "Maven Version Successfully Retrieved"),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/maven-version")
+    public ResponseEntity<String> mavenVersion(){
+        return ResponseEntity.ok(environment.getProperty("MAVEN_HOME"));
+    }
+
+
+    @Operation(summary = "Get Contact Info")
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200",description = "Contact Information Successfully Retrieved"),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContactInfo> getContactInfo(){
+        return ResponseEntity.ok(accountsContactInfo);
+    }
+
 }
