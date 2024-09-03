@@ -3,6 +3,7 @@ package com.example.loans.controller;
 import com.example.loans.dto.ErrorResponseDTO;
 import com.example.loans.dto.LoanRequest;
 import com.example.loans.dto.LoanResponse;
+import com.example.loans.dto.LoansContactDetails;
 import com.example.loans.service.LoanService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,6 +15,9 @@ import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +33,11 @@ import java.util.List;
 @Validated
 @Tag(name="Loan", description=" Loan Controller")
 public class LoanController {
+    @NonFinal @Value("${build.version}")
+    String buildVersion;
     LoanService loanService;
+    Environment environment;
+    LoansContactDetails loansContactDetails;
     @Operation(summary="Create a new  Loan")
     @ApiResponses(value={
             @ApiResponse(responseCode="201", description="Loan is successfully created",content = { @Content(mediaType = "application/json",
@@ -101,5 +109,42 @@ public class LoanController {
     @GetMapping
     public ResponseEntity<List<LoanResponse>> findByPhone(@RequestParam @Valid String phone){
         return ResponseEntity.ok(loanService.findByPhone(phone));
+    }
+
+
+
+    @Operation(summary="Get Build Version")
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200",description = "Build Version was Successfully Retrieved"),
+            @ApiResponse(responseCode = "500",description = "Internal Sever Error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/build-info")
+    public ResponseEntity<String> buildVersion(){
+        return ResponseEntity.ok(buildVersion);
+    }
+
+
+    @Operation(summary="Get Java Version")
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200",description = "Java Version was Successfully Retrieved"),
+            @ApiResponse(responseCode = "500",description = "Internal Sever Error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/java-version")
+    public ResponseEntity<String> javaVersion(){
+        return ResponseEntity.ok(environment.getProperty("JAVA_HOME"));
+    }
+
+    @Operation(summary="Get Loans Contact Details")
+    @ApiResponses(value={
+            @ApiResponse(responseCode = "200",description = "Contact Details were Successfully Retrieved",
+                    content = @Content(schema=@Schema(implementation= LoansContactDetails.class))),
+            @ApiResponse(responseCode = "500",description = "Internal Sever Error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactDetails> contactInfo(){
+        return ResponseEntity.ok(loansContactDetails);
     }
 }

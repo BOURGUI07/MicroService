@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to The Loans Production APIs"
+  contactDetails:
+    name: "Sara Bourgui"
+    email: "sarabourgui@gmail.com"
+    job: "Product Owner"
+  onCallSupport:
+    - +212675513183

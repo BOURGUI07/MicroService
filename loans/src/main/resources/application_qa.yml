@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+
+
+
+loans:
+  message: "Welcome to The Loans QA APIs"
+  contactDetails:
+    name: "Yassine Bourgui"
+    email: "yassinebourgui@gmail.com"
+    job: "QA Lead"
+  onCallSupport:
+    - +212678773183

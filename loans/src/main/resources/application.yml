@@ -14,3 +14,23 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+  profiles:
+    active:
+      - "prod"
+
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to The Loans Development APIs"
+  contactDetails:
+       name: "Youness Bourgui"
+       email: "younessbourgui@gmail.com"
+       job: "Backend Java Dev"
+  onCallSupport:
+    - +212678213183
+

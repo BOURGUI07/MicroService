@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+
+build:
+  version: "2.0"
+
+cards:
+  message: "Welcome to The Cards QA API"
+  contactDetails:
+    name: "Yassine Bourgui"
+    email: "yassinebourgui@gmail.com"
+    job: "QA Lead"
+  onCallSupport:
+    - +212678213188
