@@ -1,0 +1,13 @@
+
+
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to The Cards Development API"
+  contactDetails:
+    name: "Youness Bourgui"
+    email: "younessbourgui@gmail.com"
+    job: "Backend Java Dev"
+  onCallSupport:
+    - +212678213183

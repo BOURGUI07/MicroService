@@ -14,21 +14,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
+  application:
+    name: "cards"
   profiles:
     active: "prod"
-
-build:
-  version: "3.0"
-
-cards:
-  message: "Welcome to The Cards Development API"
-  contactDetails:
-    name: "Youness Bourgui"
-    email: "younessbourgui@gmail.com"
-    job: "Backend Java Dev"
-  onCallSupport:
-    - +212678213183
+  config:
+    import: "optional:configserver:http://localhost:8071/"

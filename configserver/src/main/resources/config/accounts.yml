@@ -1,0 +1,14 @@
+
+
+build:
+  version: "3.0"
+
+
+accounts:
+  message: "Welcome to Youness accounts related local APIs "
+  contactDetails:
+    name: "Youness Bourgui - Developer"
+    email: "younessbourgui@gmail.com"
+  onCallSupport:
+    - (212) 678213183
+

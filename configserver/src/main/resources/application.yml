@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    active: git
+  # active: native
+  cloud:
+    config:
+      server:
+        # native:
+          # search-locations: "file:///C://Users//hp//Documents//projects//microservice//configserver//src//main//resources//config"
+          # search-locations: "classpath:/config"
+       git:
+         uri: "https://github.com/eazybytes/eazybytes-config.git"
+         default-label: main
+         timeout: 5
+         clone-on-start: true
+         force-pull: true
+
+
+
+
+server:
+  port: 8071
