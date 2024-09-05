@@ -33,8 +33,6 @@ import java.util.List;
 @Validated
 @Tag(name="Loan", description=" Loan Controller")
 public class LoanController {
-    @NonFinal @Value("${build.version}")
-    String buildVersion;
     LoanService loanService;
     Environment environment;
     LoansContactDetails loansContactDetails;
@@ -112,17 +110,6 @@ public class LoanController {
     }
 
 
-
-    @Operation(summary="Get Build Version")
-    @ApiResponses(value={
-            @ApiResponse(responseCode = "200",description = "Build Version was Successfully Retrieved"),
-            @ApiResponse(responseCode = "500",description = "Internal Sever Error",
-                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
-    })
-    @GetMapping("/build-info")
-    public ResponseEntity<String> buildVersion(){
-        return ResponseEntity.ok(buildVersion);
-    }
 
 
     @Operation(summary="Get Java Version")

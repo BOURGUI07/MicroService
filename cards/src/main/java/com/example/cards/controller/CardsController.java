@@ -35,8 +35,6 @@ import java.util.List;
 public class CardsController {
     CardService service;
     Environment environment;
-    @NonFinal @Value("${build.version}")
-    String buildVersion;
     CardsContactDetails cardsContactDetails;
     @Operation(summary="Create a new  Card")
     @ApiResponses(value={

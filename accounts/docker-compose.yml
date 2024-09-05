@@ -1,6 +1,6 @@
 services:
   accounts:
-    image: "youness544/accounts"
+    image: "youness544/accounts:accounts"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -11,7 +11,7 @@ services:
     networks:
       - youness
   loans:
-    image: "youness544/loans"
+    image: "youness544/loans:loans"
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -22,7 +22,7 @@ services:
     networks:
       - youness
   cards:
-    image: "youness544/cards"
+    image: "youness544/cards:cards"
     container_name: cards-ms
     ports:
       - "9000:9000"
