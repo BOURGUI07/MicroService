@@ -1,9 +1,6 @@
 package com.example.accounts.controller;
 
-import com.example.accounts.dto.AccountsContactInfo;
-import com.example.accounts.dto.CustomerRequest;
-import com.example.accounts.dto.CustomerResponse;
-import com.example.accounts.dto.ErrorResponseDTO;
+import com.example.accounts.dto.*;
 import com.example.accounts.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -108,6 +105,23 @@ public class CustomerController {
     @GetMapping
     public ResponseEntity<CustomerResponse> findByPhone(@RequestParam @Valid String phone){
         return ResponseEntity.ok(customerService.findByPhone(phone));
+    }
+
+
+    @Operation(summary="Get customer details by phone", description="Retrieve a all customer details by phone")
+    @ApiResponses(value={
+            @ApiResponse(responseCode="404", description="customer isn't found",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class))),
+            @ApiResponse(responseCode="200", description="customer was successfully Found",content = { @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = CustomerResponse.class)) }),
+            @ApiResponse(responseCode="400", description="Client Entered a Negative id",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
+    })
+    @GetMapping("/details")
+    public ResponseEntity<CustomerDetailsResponse> findAllDetailsByPhone(@RequestParam @Valid String phone){
+        return ResponseEntity.ok(customerService.findAllDetailsByPhone(phone));
     }
 
 

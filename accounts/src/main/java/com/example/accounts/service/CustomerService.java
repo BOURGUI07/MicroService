@@ -1,13 +1,13 @@
 package com.example.accounts.service;
 
-import com.example.accounts.dto.AccountsRequest;
-import com.example.accounts.dto.CustomerRequest;
-import com.example.accounts.dto.CustomerResponse;
+import com.example.accounts.dto.*;
 import com.example.accounts.exception.EntityAlreadyExistsException;
 import com.example.accounts.exception.EntityNotFoundException;
 import com.example.accounts.mapper.CustomerMapper;
 import com.example.accounts.repo.AccountsRepo;
 import com.example.accounts.repo.CustomerRepo;
+import com.example.accounts.service.client.CardsFeignClient;
+import com.example.accounts.service.client.LoansFeignClient;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -22,6 +22,7 @@ import lombok.experimental.NonFinal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -32,6 +33,8 @@ public class CustomerService {
     CustomerMapper mapper;
     AccountsRepo accountsRepo;
     Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+    CardsFeignClient cardsFeignClient;
+    LoansFeignClient loansFeignClient;
 
     @Transactional
     public CustomerResponse create(CustomerRequest x) {
@@ -91,6 +94,17 @@ public class CustomerService {
             throw new ConstraintViolationException(violations);
         }
         accountsRepo.deleteByCustomerPhone(phone);
+    }
+
+    public CustomerDetailsResponse findAllDetailsByPhone(@Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits") String phone){
+        var violations = validator.validate(phone);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
+        var customerResponse = repo.findByPhone(phone).map(mapper::toDto).orElseThrow(() -> new EntityNotFoundException("Customer not found"));
+        var cardResponse = cardsFeignClient.findByPhone(phone).getBody();
+        var loanResponse = loansFeignClient.findByPhone(phone).getBody();
+        return new CustomerDetailsResponse(customerResponse,cardResponse,loanResponse);
     }
 
 
