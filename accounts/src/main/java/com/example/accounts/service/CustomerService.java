@@ -102,8 +102,16 @@ public class CustomerService {
             throw new ConstraintViolationException(violations);
         }
         var customerResponse = repo.findByPhone(phone).map(mapper::toDto).orElseThrow(() -> new EntityNotFoundException("Customer not found"));
-        var cardResponse = cardsFeignClient.findByPhone(phone).getBody();
-        var loanResponse = loansFeignClient.findByPhone(phone).getBody();
+        var consumedCard = cardsFeignClient.findByPhone(phone);
+        List<CardResponse> cardResponse = null;
+        if(consumedCard!=null){
+            cardResponse = consumedCard.getBody();
+        }
+        var consumedLoan = loansFeignClient.findByPhone(phone);
+        List<LoanResponse> loanResponse = null;
+        if(consumedLoan!=null){
+            loanResponse = consumedLoan.getBody();
+        }
         return new CustomerDetailsResponse(customerResponse,cardResponse,loanResponse);
     }
 
