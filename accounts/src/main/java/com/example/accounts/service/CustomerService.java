@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -112,7 +113,7 @@ public class CustomerService {
         if(consumedLoan!=null){
             loanResponse = consumedLoan.getBody();
         }
-        return new CustomerDetailsResponse(customerResponse,cardResponse,loanResponse);
+        return new CustomerDetailsResponse(customerResponse, Optional.ofNullable(cardResponse),Optional.ofNullable(loanResponse));
     }
 
 

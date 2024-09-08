@@ -2,6 +2,8 @@ package com.example.accounts.controller;
 
 import com.example.accounts.dto.*;
 import com.example.accounts.service.CustomerService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,6 +15,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -27,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 @FieldDefaults(makeFinal = true,level = AccessLevel.PRIVATE)
 @Validated
 @Tag(name="Customer", description=" Customer Controller")
+@Slf4j
 public class CustomerController {
     @Value("${build.version}")
     @NonFinal String buildVersion;
@@ -133,8 +137,15 @@ public class CustomerController {
                     content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
     })
     @GetMapping("/build-info")
+    @Retry(name="buildInfo",fallbackMethod = "buildInfoFallBack")
     public ResponseEntity<String> buildInfo(){
+        log.debug("buildInfo() method invoked");
         return ResponseEntity.ok(buildVersion);
+    }
+
+    private ResponseEntity<String> buildInfoFallBack(Throwable throwable){
+        log.debug("buildInfoFallBack() method invoked");
+        return ResponseEntity.ok("0.9");
     }
 
     @Operation(summary = "Get Java Version")
@@ -144,8 +155,15 @@ public class CustomerController {
                     content = @Content(schema=@Schema(implementation= ErrorResponseDTO.class)))
     })
     @GetMapping("/java-version")
+    @RateLimiter(name="javaVersion",fallbackMethod = "javaVersionFallBack")
     public ResponseEntity<String> javaVersion(){
+        log.debug("javaVersion() method invoked");
         return ResponseEntity.ok(environment.getProperty("JAVA_HOME"));
+    }
+
+    private ResponseEntity<String> javaVersionFallBack(Throwable throwable){
+        log.debug("javaVersionFallBack() method invoked");
+        return ResponseEntity.ok("Java 22");
     }
 
     @Operation(summary = "Get Maven Version")
