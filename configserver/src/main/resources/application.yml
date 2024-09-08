@@ -36,3 +36,14 @@ management:
     health:
       probes:
         enabled: true
+  metrics:
+    tag:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    com:
+      example:
+        configserver: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

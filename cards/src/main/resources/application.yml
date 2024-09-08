@@ -39,6 +39,9 @@ management:
     health:
       probes:
         enabled: true
+  metrics:
+    tag:
+      application: ${spring.application.name}
 
 eureka:
   instance:
@@ -54,3 +57,12 @@ info:
     name: "cards"
     description: "Youness Cards App"
     version: "1.0.0"
+
+
+logging:
+  level:
+    com:
+      example:
+        cards: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

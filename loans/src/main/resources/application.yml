@@ -40,6 +40,9 @@ management:
     health:
       probes:
         enabled: true
+  metrics:
+    tag:
+      application: ${spring.application.name}
 
 eureka:
   instance:
@@ -55,5 +58,13 @@ info:
     name: "loans"
     description: "Youness Loans App"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      example:
+        loans: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
 
 
