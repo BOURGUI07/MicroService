@@ -1,6 +1,8 @@
 package com.example.accounts.service;
 
 import com.example.accounts.dto.*;
+import com.example.accounts.entity.Accounts;
+import com.example.accounts.entity.Customer;
 import com.example.accounts.exception.EntityAlreadyExistsException;
 import com.example.accounts.exception.EntityNotFoundException;
 import com.example.accounts.mapper.CustomerMapper;
@@ -19,7 +21,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +33,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Service
 @FieldDefaults(makeFinal = true,level = AccessLevel.PRIVATE)
+@Slf4j
 public class CustomerService {
     CustomerRepo repo;
     CustomerMapper mapper;
@@ -36,6 +41,7 @@ public class CustomerService {
     Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
     CardsFeignClient cardsFeignClient;
     LoansFeignClient loansFeignClient;
+    StreamBridge streamBridge;
 
     @Transactional
     public CustomerResponse create(CustomerRequest x) {
@@ -50,8 +56,17 @@ public class CustomerService {
         var savedCustomer = repo.save(customer);
         var accountRequest = new AccountsRequest(savedCustomer.getId(), x.accountType(), x.branchAddress());
         var account = mapper.toAccountEntity(accountRequest);
-        var SavedAccount = accountsRepo.save(account);
+        var savedAccount = accountsRepo.save(account);
+        sendCommunication(savedAccount,savedCustomer);
         return mapper.toDto(savedCustomer);
+    }
+
+    private void sendCommunication(Accounts savedAccount, Customer savedCustomer) {
+        var accountMsgDTO = new AccountsMsgDTO(savedAccount.getAccountNumber(),
+                savedCustomer.getName(), savedCustomer.getEmail(), savedCustomer.getPhone());
+        log.info("Sending communication request for details {}", accountMsgDTO);
+        var result = streamBridge.send("sendCommunication-out-0", accountMsgDTO);
+        log.info("Is communication sent successfully? {}", result);
     }
 
     @Transactional
@@ -116,5 +131,12 @@ public class CustomerService {
         return new CustomerDetailsResponse(customerResponse, Optional.ofNullable(cardResponse),Optional.ofNullable(loanResponse));
     }
 
+
+    public boolean updateCommunicationStatus(Integer accountNumber){
+        var account = accountsRepo.findById(accountNumber)
+                .orElseThrow(() -> new EntityNotFoundException("Account not found"))
+                .setCommunicationStatus(true);
+        return accountsRepo.save(account).getCommunicationStatus();
+    }
 
 }
