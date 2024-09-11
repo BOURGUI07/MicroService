@@ -16,6 +16,7 @@ import java.util.List;
 @EnableJpaAuditing
 @EnableFeignClients
 @EnableConfigurationProperties(value = {AccountsContactInfo.class})
+@EnableDiscoveryClient
 public class AccountsApplication {
 
 	public static void main(String[] args) {

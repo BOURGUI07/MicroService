@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name="cards",fallback = CardsFallBack.class)
+@FeignClient(name="cards", url ="http://cards:9000",fallback = CardsFallBack.class)
 public interface CardsFeignClient {
     @GetMapping("/api/cards")
     public ResponseEntity<List<CardResponse>> findByPhone(@RequestParam String phone);

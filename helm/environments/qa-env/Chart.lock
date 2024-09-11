@@ -5,9 +5,6 @@ dependencies:
 - name: configserver
   repository: file://../../youness-services/configserver
   version: 0.1.0
-- name: eurekaserver
-  repository: file://../../youness-services/eurekaserver
-  version: 0.1.0
 - name: accounts
   repository: file://../../youness-services/accounts
   version: 0.1.0
@@ -23,5 +20,5 @@ dependencies:
 - name: message
   repository: file://../../youness-services/message
   version: 0.1.0
-digest: sha256:103c41c63e7c5f1e36f6c7f8e9460bec62faf7e791e79f762adbcf085faa4004
-generated: "2024-09-11T11:15:21.5360311+02:00"
+digest: sha256:77b6415bee50e38785f07ecfcabdefbee779f015dec4e0c9a99129cdbcb94e82
+generated: "2024-09-11T19:35:43.6213597+02:00"

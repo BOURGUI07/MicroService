@@ -4,34 +4,122 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9623a35-3770-4567-b6e4-efd2eb325a4f" name="Changes" comment="">
+    <list default="true" id="ba1b74f4-2d0c-41bf-8db1-658895dcbf09" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/AccountsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/AccountsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/CardsFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/CardsFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/LoansFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/LoansFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cards/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/src/main/java/com/example/cards/CardsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cards/src/main/java/com/example/cards/CardsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cards/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/common-config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/observability/alloy/alloy-local-config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/observability/grafana/datasource.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/observability/loki/loki-config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/observability/prometheus/prometheus.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/observability/tempo/tempo.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/common-config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/qa/common-config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/src/main/java/com/example/eurekaserver/EurekaserverApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver/src/test/java/com/example/eurekaserver/EurekaserverApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/example/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/example/gatewayserver/GatewayserverApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/Chart.lock" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/Chart.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/Chart.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/accounts-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/charts/accounts-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/cards-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/charts/cards-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/configserver-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/charts/configserver-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/eurekaserver-0.1.0.tgz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/gatewayserver-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/charts/gatewayserver-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/loans-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/charts/loans-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/message-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/charts/message-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/dev-env/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/dev-env/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/Chart.lock" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/Chart.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/Chart.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/accounts-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/charts/accounts-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/cards-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/charts/cards-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/configserver-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/charts/configserver-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/eurekaserver-0.1.0.tgz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/gatewayserver-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/charts/gatewayserver-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/loans-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/charts/loans-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/message-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/charts/message-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/prod-env/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/prod-env/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/Chart.lock" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/Chart.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/Chart.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/accounts-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/charts/accounts-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/cards-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/charts/cards-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/configserver-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/charts/configserver-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/eurekaserver-0.1.0.tgz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/gatewayserver-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/charts/gatewayserver-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/loans-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/charts/loans-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/message-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/charts/message-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/environments/qa-env/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/environments/qa-env/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-common/templates/configmap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-common/templates/configmap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-common/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-common/templates/deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/accounts/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/accounts/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/accounts/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/accounts/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/cards/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/cards/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/cards/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/cards/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/configserver/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/configserver/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/configserver/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/configserver/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/eurekaserver/.helmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/eurekaserver/Chart.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/eurekaserver/Chart.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/eurekaserver/charts/youness-common-0.1.0.tgz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/eurekaserver/templates/deployment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/eurekaserver/templates/service.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/eurekaserver/values.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/gatewayserver/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/gatewayserver/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/gatewayserver/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/gatewayserver/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/loans/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/loans/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/loans/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/loans/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/message/charts/youness-common-0.1.0.tgz" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/message/charts/youness-common-0.1.0.tgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helm/youness-services/message/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/helm/youness-services/message/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/accounts.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/cards.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/configmaps.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/configserver.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/eurekaserver.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/gateway.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/keycloak.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/loans.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/loans/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/src/main/java/com/example/loans/LoansApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/java/com/example/loans/LoansApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Record" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2ljLQfrxspaiEi6bYp6LKHanOdc" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2lvv8XQKZrGemxN9U9XlRMolTg0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,7 +129,6 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/hp/Documents/projects/microservice/message",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,15 +138,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\hp\Documents\projects\microservice\message" />
-      <recent name="C:\Users\hp\Documents\projects\microservice\gatewayserver" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.accounts.dto" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -70,7 +148,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayserverApplication">
+  <component name="RunManager" selected="Spring Boot.AccountsApplication">
     <configuration name="AccountsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="accounts" />
@@ -94,13 +172,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EurekaserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="eurekaserver" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.eurekaserver.EurekaserverApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GatewayserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="gatewayserver" />
@@ -117,13 +188,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MessageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="message" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.message.MessageApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -136,15 +200,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c9623a35-3770-4567-b6e4-efd2eb325a4f" name="Changes" comment="" />
-      <created>1725688526396</created>
+      <changelist id="ba1b74f4-2d0c-41bf-8db1-658895dcbf09" name="Changes" comment="" />
+      <created>1726073208236</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1725688526396</updated>
-      <workItem from="1725688527050" duration="11877000" />
-      <workItem from="1725782981780" duration="13526000" />
-      <workItem from="1725825436774" duration="5000" />
-      <workItem from="1725871680562" duration="10681000" />
+      <updated>1726073208236</updated>
+      <workItem from="1726073210045" duration="2720000" />
     </task>
     <servers />
   </component>

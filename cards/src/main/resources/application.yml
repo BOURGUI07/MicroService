@@ -18,6 +18,10 @@ spring:
     active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    kubernetes:
+      discovery:
+        all-namespaces: true
 
 
 management:
@@ -43,14 +47,7 @@ management:
     tag:
       application: ${spring.application.name}
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    serviceUrl:
-      default-zone: http://localhost:8070/eureka/
+
 
 info:
   app:
