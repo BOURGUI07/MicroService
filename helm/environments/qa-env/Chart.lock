@@ -1,0 +1,27 @@
+dependencies:
+- name: youness-common
+  repository: file://../../youness-common
+  version: 0.1.0
+- name: configserver
+  repository: file://../../youness-services/configserver
+  version: 0.1.0
+- name: eurekaserver
+  repository: file://../../youness-services/eurekaserver
+  version: 0.1.0
+- name: accounts
+  repository: file://../../youness-services/accounts
+  version: 0.1.0
+- name: cards
+  repository: file://../../youness-services/cards
+  version: 0.1.0
+- name: loans
+  repository: file://../../youness-services/loans
+  version: 0.1.0
+- name: gatewayserver
+  repository: file://../../youness-services/gatewayserver
+  version: 0.1.0
+- name: message
+  repository: file://../../youness-services/message
+  version: 0.1.0
+digest: sha256:103c41c63e7c5f1e36f6c7f8e9460bec62faf7e791e79f762adbcf085faa4004
+generated: "2024-09-11T11:15:21.5360311+02:00"

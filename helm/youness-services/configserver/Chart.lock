@@ -1,0 +1,6 @@
+dependencies:
+- name: youness-common
+  repository: file://../../youness-common
+  version: 0.1.0
+digest: sha256:31f3bcbac058338a8e0ab4b6ceef18c1ff0901a04ef56b95350df8e0307028bc
+generated: "2024-09-11T10:56:12.5104758+02:00"
